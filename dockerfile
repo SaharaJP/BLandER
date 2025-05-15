@@ -9,4 +9,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-ENTRYPOINT ["sh", "entrypoint.sh"]
+RUN apt-get update && apt-get install -y dumb-init
+
+ENTRYPOINT ["dumb-init", "--"]
+CMD ["sh", "entrypoint.sh"]

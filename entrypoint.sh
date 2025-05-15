@@ -2,7 +2,6 @@
 
 rm -f blander.db
 
-sleep 15
 # run FastAPI backend
 uvicorn api.main:app --host 0.0.0.0 --port 8000 &
 
