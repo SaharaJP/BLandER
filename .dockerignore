@@ -1,0 +1,17 @@
+# Виртуальное окружение
+.venv/
+
+# Кэш Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Данные
+*.db
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.idea/
