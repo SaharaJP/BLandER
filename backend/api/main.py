@@ -2,9 +2,10 @@ import json
 import os
 from json import JSONDecodeError
 
+import uvicorn
 from fastapi import FastAPI, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
-from api import auth, database, schemas
+from . import database, auth, schemas
 from fastapi.middleware.cors import CORSMiddleware
 import requests
 
@@ -12,7 +13,7 @@ import stripe
 import ollama
 import logging
 
-from api.database import get_db
+from .database import get_db
 
 app = FastAPI()
 stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
@@ -144,3 +145,6 @@ async def create_payment_session(
         return {"session_id": session.url}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="localhost", port=8000)

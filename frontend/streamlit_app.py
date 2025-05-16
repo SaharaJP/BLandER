@@ -1,9 +1,8 @@
 import streamlit as st
 import requests
 import os
-from datetime import datetime
 
-from api.lesson_load import load_lessons
+from lesson_load import load_lessons
 
 # Конфигурация
 API_URL = "http://localhost:8000"
@@ -131,7 +130,7 @@ def show_analyzer(headers):
         if response.status_code == 200:
             result = response.json()
             st.subheader("Результаты анализа")
-            st.write(f"Оценка: {result['score']}/100")
+            st.write(f"Оценка: {result['score']}/10")
             st.subheader("Рекомендации:")
             for feedback in result["feedback"]:
                 st.write(f"- {feedback}")

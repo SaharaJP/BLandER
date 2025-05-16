@@ -4,12 +4,11 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from datetime import datetime, timedelta
 from fastapi.security import OAuth2PasswordBearer
-import os
 
 from sqlalchemy.orm import Session
 
-from api.database import User, get_db
-from api import schemas
+from . import database
+from .database import User, get_db
 
 SECRET_KEY = "your-256-bit-secret" #Вынести в .env
 ALGORITHM = "HS256"
